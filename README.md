@@ -24,8 +24,15 @@ A simple demonstration of OpenAI API integration with a custom tool for checking
 git clone git@github.com:nrafal/openai-demo.git
 cd openai-demo
 ```
+2. (Optional) Create a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Unix/macOS
+# or
+.venv\Scripts\activate  # On Windows
+```
 
-2. Install required packages:
+3. Install required packages:
 ```bash
 # Using pip directly
 pip install openai requests
@@ -34,7 +41,7 @@ pip install openai requests
 pip install -r requirements.txt
 ```
 
-3. Set up your OpenAI API key:
+4. Set up your OpenAI API key:
 ```bash
 export OPENAI_API_KEY='your-api-key'
 ```
