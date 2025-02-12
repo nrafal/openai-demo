@@ -21,7 +21,7 @@ A simple demonstration of OpenAI API integration with a custom tool for checking
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
+git clone git@github.com:nrafal/openai-demo.git
 cd openai-demo
 ```
 
@@ -71,3 +71,33 @@ The application uses:
 ## Note
 
 The NBP API only provides data for working days. Requests for weekends or holidays may return errors.
+
+## Azure OpenAI Setup
+
+To use Azure OpenAI API instead of OpenAI API:
+
+1. Update environment variables:
+```bash
+export AZURE_OPENAI_ENDPOINT='your-azure-endpoint'
+export AZURE_OPENAI_KEY='your-azure-key'
+export AZURE_OPENAI_DEPLOYMENT='your-deployment-name'
+```
+
+2. Modify the code initialization:
+```python
+from openai import AzureOpenAI
+
+client = AzureOpenAI(
+    api_key=os.getenv("AZURE_OPENAI_KEY"),
+    api_version="2024-02-15-preview",
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
+)
+```
+
+3. Update the model name in chat completion calls:
+```python
+response = client.chat.completions.create(
+    model=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
+    # rest of the parameters remain the same
+)
+```
